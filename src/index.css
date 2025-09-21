@@ -1,0 +1,273 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar globally while maintaining scroll functionality */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/* Ensure smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@layer utilities {
+  .animate-bounce-slow {
+    animation: bounceGentle 3s ease-in-out infinite;
+  }
+  
+  .animate-bounce-slow-delay {
+    animation: bounceGentle 3s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulseGentle 4s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow-delay {
+    animation: pulseGentle 4s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  
+  .animate-pulse-gentle {
+    animation: pulseGentle 2s ease-in-out infinite;
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 0.6s ease-out;
+  }
+  
+  /* Road scene animations */
+  .animate-road-car-1 {
+    animation: moveRoadCar1 12s linear infinite;
+  }
+  
+  .animate-road-car-2 {
+    animation: moveRoadCar2 15s linear infinite;
+    animation-delay: -5s;
+  }
+  
+  .animate-road-car-3 {
+    animation: moveRoadCar3 18s linear infinite;
+    animation-delay: -10s;
+  }
+  
+  .animate-float-slow {
+    animation: floatGentle 6s ease-in-out infinite;
+  }
+  
+  .animate-float-slow-delay {
+    animation: floatGentle 6s ease-in-out infinite;
+    animation-delay: 3s;
+  }
+  
+  .animate-sway {
+    animation: swayGentle 4s ease-in-out infinite;
+  }
+  
+  .animate-sway-delay {
+    animation: swayGentle 4s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  
+  /* Step cards animations */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s ease-in-out infinite;
+  }
+  
+  .animate-icon-pulse {
+    animation: iconPulse 3s ease-in-out infinite;
+  }
+  
+  .road-perspective {
+    transform: perspective(500px) rotateX(45deg);
+    transform-origin: bottom;
+  }
+  
+  .road-lines {
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 20px,
+      white 20px,
+      white 40px
+    );
+    animation: roadMarkings 2s linear infinite;
+  }
+  
+  .road-center-line {
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 15px,
+      #fbbf24 15px,
+      #fbbf24 30px
+    );
+    animation: roadMarkings 1.5s linear infinite;
+  }
+}
+
+@keyframes moveRoadCar1 {
+  0% {
+    transform: translateX(-60px) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(200px) scale(1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(460px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes moveRoadCar2 {
+  0% {
+    transform: translateX(-80px) scale(0.7);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(180px) scale(0.9);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(440px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes moveRoadCar3 {
+  0% {
+    transform: translateX(-70px) scale(0.75);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(190px) scale(0.95);
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(450px) scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseGentle {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+@keyframes swayGentle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes roadMarkings {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
